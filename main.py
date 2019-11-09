@@ -6,8 +6,7 @@ import time
 import CaixeiroViajante
 
 #Leitura do arquivo fonte do grafo
-#fileName = input("Arquivo do grafo: ")
-fileName = 'toy.txt'
+fileName = input("Arquivo do grafo: ")
 file = open(fileName)
 
 str = file.readline()
@@ -27,17 +26,17 @@ for i in range(0, numArestas):
     str = str.split(" ")
     origem = int(str[0])
     destino = int(str[1])
-    peso = int(str[2])
+    peso = float(str[2])
     listaAdj[origem].append((destino, peso))
     matAdj[origem][destino] = peso
     arestas.append((origem, destino, peso))
-print(listaAdj)
-print(matAdj)
-print(arestas)
+#print(listaAdj)
+#print(matAdj)
+#print(arestas)
 n = len(listaAdj)
 s = []
 l = []
-p = 0
+
 
 #Interacao com o usuario
 tp = int(input('Informe o tipo de Pesquisa que deseja realizar:\n' +
@@ -131,13 +130,15 @@ elif tp == 3:
         print(f'Tempo de execução de FloydWarshall = {fim - inicio}s')
         print('-' * 30)
 elif tp == 4:
+    print(f'Grafo: {fileName}')
     s = CaixeiroViajante.NearestNeighbor(listaAdj)
-    print('Refinamento de soluções. Por favor, aguarde ...\n')
+    p = CaixeiroViajante.Avalia(s, matAdj)
+    print(p)
+    print('Processando refinamento...')
     l = CaixeiroViajante.TWOOPT(s, matAdj)
     p = CaixeiroViajante.Avalia(l, matAdj)
-    print('Término de refinamento.\n' +
-          f'Melhor caminho encontrado: {l}\n'+
-          f'Novo custo: {p}\n')
+    print(f'Distância TwoPt: {p}')
+    print(f'Rota: {l}')
 
 
 

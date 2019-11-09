@@ -4,7 +4,6 @@ import time
 
 
 def NearestNeighbor(listAdj):
-    peso = 0
     vaux = -1
     naovisitados = [x for x in range(len(listAdj))]#Lista com todos os vértices
     visitado = [0 for x in range(len(listAdj))]#Lista de identificação paa vértice já visitado
@@ -18,18 +17,11 @@ def NearestNeighbor(listAdj):
             if i[1] < menor and visitado[i[0]] == 0:#Vertice destino não visitado e de menor peso
                 menor = i[1]
                 vaux = i[0]
-        peso += menor
         visitado[vaux] = 1
         s.append(vaux)
         naovisitados.remove(u)
         u = vaux
     s.append(s[0])
-    peso += listAdj[s[len(s)-1]][s[0]][1]#Recebe ultimo peso do vértice de chegada [origem][destino][peso]
-    print('-' * 30)
-    print(f'Custo do ciclo de melhor caminho encontrado: {peso}')
-    print('-' * 30) 
-    print(f'Melhor ciclo Hamiltoniano encontrado: {s}')
-    print('-' * 30)
     return s
 
 def TWOOPT(s, matAdj):
