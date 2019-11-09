@@ -32,7 +32,7 @@ def NearestNeighbor(listAdj):
     print('-' * 30)
     return s
 
-def TWOOPT(s, listAdj):
+def TWOOPT(s, matAdj):
     a = []
     b = -1
     start = time.time()
@@ -46,19 +46,19 @@ def TWOOPT(s, listAdj):
             b = a[I1]
             a[I1] = a[I2]
             a[I2] = b
-            if Avalia(a, listAdj) < Avalia(s, listAdj):
+            if Avalia(a, matAdj) < Avalia(s, matAdj):
                 s = copy.deepcopy(a)            
     return s
 
 
-def Avalia(s, listAdj):
+def Avalia(s, matAdj):
     custo = 0
-    u = -1
-    v = -1
+    u = 0
+    v = 0
     for i in range(len(s)-1):
         u = s[i]
         v = s[i+1]
-        custo = custo + listAdj[u][v-1][1]
+        custo = custo + matAdj[u][v]
     return custo
 
 

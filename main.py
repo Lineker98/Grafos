@@ -131,9 +131,9 @@ elif tp == 3:
         print('-' * 30)
 elif tp == 4:
     s = CaixeiroViajante.NearestNeighbor(listaAdj)
-    l = CaixeiroViajante.TWOOPT(s, listaAdj)
+    l = CaixeiroViajante.TWOOPT(s, matAdj)
     print('Pós refinamento\n')
     print(l)
-
+    
 
 
