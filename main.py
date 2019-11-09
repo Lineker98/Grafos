@@ -84,8 +84,9 @@ elif tp == 3:
                     '1 - Djisktra:\n' +
                     '2 - Bellman Ford:\n' +
                     '3 - Floyd Warshall\n' +
-                    '4 - Caixeiro Viajante\n'))
-    if op < 1 or op > 4:
+                    '4 - Caixeiro Viajante\n'+
+                    '5 - Refinamento - TWOOPT'))
+    if op < 1 or op > 5:
         while op < 1 or op > 4:
             print('ENTRADA INVÁLIDA! dIGITE NOVAMENTE! ')
             op = int(input('Informe qual função deseja usar para busca de caminho mínimo:\n' +
@@ -128,4 +129,11 @@ elif tp == 3:
         fim = time.time()
         print(f'O tempo de execução para NearestNeighbor = {fim - inicio}s')
         print('-' * 20)
+    if op == 5:
+        c = CaixeiroViajante.NearestNeighbor(listaAdj)
+        inicio = time.time()
+        CaixeiroViajante.TWOOPT(c, listaAdj)
+        fim = time.time()
+        print(f'Tempo de execução do Refinamento TWOOPT = {fim - inicio}s')
+
 
