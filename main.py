@@ -3,9 +3,11 @@ import info
 import busca
 import CaminhoMinimo
 import time
+import CaixeiroViajante
 
 #Leitura do arquivo fonte do grafo
-fileName = input("Arquivo do grafo: ")
+#fileName = input("Arquivo do grafo: ")
+fileName = 'toy.txt'
 file = open(fileName)
 
 str = file.readline()
@@ -81,14 +83,16 @@ elif tp == 3:
     op = int(input('Informe qual função deseja usar para busca de caminho mínimo:\n' +
                     '1 - Djisktra:\n' +
                     '2 - Bellman Ford:\n' +
-                    '3 - Floyd Warshall\n'))
-    if op < 1 or op > 3:
-        while op < 1 or op > 3:
+                    '3 - Floyd Warshall\n' +
+                    '4 - Caixeiro Viajante\n'))
+    if op < 1 or op > 4:
+        while op < 1 or op > 4:
             print('ENTRADA INVÁLIDA! dIGITE NOVAMENTE! ')
             op = int(input('Informe qual função deseja usar para busca de caminho mínimo:\n' +
                            '1 - Djisktra:\n' +
                            '2 - Bellman Ford:\n' +
-                           '3 - Floyd Warshall\n'))
+                           '3 - Floyd Warshall\n' +
+                           '4 - Caixeiro Viajante'))
     print(f'Seu grafo possui vértices somente de 0 a {n-1}')
     s = int(input(f'Informe o vértice que deseja inicar: \n'))
     if s < 0 or s > n-1:
@@ -105,16 +109,23 @@ elif tp == 3:
         CaminhoMinimo.Dijkstra(listaAdj, s, t)
         fim = time.time()
         print(f'Tempo de execução de Dijkstra = {fim - inicio}s')
-        print('^^' * 30)
+        print('-' * 30)
     if op == 2:
         inicio = time.time()
         CaminhoMinimo.BellmanFord(listaAdj, arestas, s, t)
         fim = time.time()
         print(f'Tempo de execução de Bellman Ford = {fim - inicio}s')
-        print('^^' * 30)
+        print('-' * 30)
     if op == 3:
         inicio = time.time()
-        CaminhoMinimo.FloydWarshall(matAdj, arestas, s, t)
+        CaminhoMinimo.FloydWarshall(matAdj, s, t)
         fim = time.time()
         print(f'Tempo de execução de FloydWarshall = {fim - inicio}s')
-        print('^^' * 30)
+        print('-' * 30)
+    if op == 4:
+        inicio = time.time()
+        CaixeiroViajante.NearestNeighbor(listaAdj)
+        fim = time.time()
+        print(f'O tempo de execução para NearestNeighbor = {fim - inicio}s')
+        print('-' * 20)
+
