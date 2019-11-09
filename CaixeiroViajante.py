@@ -1,5 +1,6 @@
 from random import randint
 import copy
+import time
 
 
 def NearestNeighbor(listAdj):
@@ -29,27 +30,37 @@ def NearestNeighbor(listAdj):
     print('-' * 30) 
     print(f'Melhor ciclo Hamiltoniano encontrado: {s}')
     print('-' * 30)
-    #return s
+    return s
 
 def TWOOPT(s, listAdj):
     a = []
     b = -1
-    while ():
-        I1 = randint(1, len(s)-1)
-        I2 = randint(1, len(s)-1)
+    start = time.time()
+    end = time.time()
+    while end - start <= 60:
+        end = time.time()
+        I1 = randint(1, len(s)-2)
+        I2 = randint(1, len(s)-2)
         if I1 != I2:
-            a = copy.deepcopy(s)
+            a = copy.copy(s)
             b = a[I1]
             a[I1] = a[I2]
             a[I2] = b
             if Avalia(a, listAdj) < Avalia(s, listAdj):
-                s = copy.deepcopy(a)
+                s = copy.copy(a)            
     return s
 
 
-def Avalia(a, listAdj):
+def Avalia(s, listAdj):
     custo = 0
-    for i in range(len(listAdj) -1):
+    u = -1
+    v = -1
+    for i in range(len(s)-1):
+        u = s[i]
+        v = s[i+1]
+        custo = custo + listAdj[u][v-1][1]
+    return custo
+
 
 
 

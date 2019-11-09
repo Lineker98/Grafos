@@ -21,6 +21,7 @@ matAdj = [[0 for x in range(numVertices)] for x in range(numVertices)]
 vertices = [x for x in range(numVertices)]
 arestas = []
 
+
 for i in range(0, numArestas):
     str = file.readline()
     str = str.split(" ")
@@ -34,12 +35,15 @@ print(listaAdj)
 print(matAdj)
 print(arestas)
 n = len(listaAdj)
+s = []
+l = []
 
 #Interacao com o usuario
 tp = int(input('Informe o tipo de Pesquisa que deseja realizar:\n' +
-               '1 - Informações do Grafo:\n' +
-               '2 - Buscas no grafo:\n' +
-               '3 - Pesquisas de Caminhos mínimos:'))
+               '1 - Informações do Grafo :\n' +
+               '2 - Buscas no grafo :\n' +
+               '3 - Pesquisas de Caminhos mínimos: \n' +
+               '4 - Caixeiro Viajante: '))
 if tp == 1:
     op = int(input("Operacao: \n" +
                    "1 Densidade\n" +
@@ -107,8 +111,10 @@ elif tp == 3:
             t = int(input('Informe qual o vértice de destino final: \n'))
     if op == 1:
         inicio = time.time()
+        print(inicio)
         CaminhoMinimo.Dijkstra(listaAdj, s, t)
         fim = time.time()
+        print(fim)
         print(f'Tempo de execução de Dijkstra = {fim - inicio}s')
         print('-' * 30)
     if op == 2:
@@ -123,17 +129,11 @@ elif tp == 3:
         fim = time.time()
         print(f'Tempo de execução de FloydWarshall = {fim - inicio}s')
         print('-' * 30)
-    if op == 4:
-        inicio = time.time()
-        CaixeiroViajante.NearestNeighbor(listaAdj)
-        fim = time.time()
-        print(f'O tempo de execução para NearestNeighbor = {fim - inicio}s')
-        print('-' * 20)
-    if op == 5:
-        c = CaixeiroViajante.NearestNeighbor(listaAdj)
-        inicio = time.time()
-        CaixeiroViajante.TWOOPT(c, listaAdj)
-        fim = time.time()
-        print(f'Tempo de execução do Refinamento TWOOPT = {fim - inicio}s')
+elif tp == 4:
+    s = CaixeiroViajante.NearestNeighbor(listaAdj)
+    l = CaixeiroViajante.TWOOPT(s, listaAdj)
+    print('Pós refinamento\n')
+    print(l)
+
 
 
