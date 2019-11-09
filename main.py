@@ -37,6 +37,7 @@ print(arestas)
 n = len(listaAdj)
 s = []
 l = []
+p = 0
 
 #Interacao com o usuario
 tp = int(input('Informe o tipo de Pesquisa que deseja realizar:\n' +
@@ -131,9 +132,12 @@ elif tp == 3:
         print('-' * 30)
 elif tp == 4:
     s = CaixeiroViajante.NearestNeighbor(listaAdj)
+    print('Refinamento de soluções. Por favor, aguarde ...\n')
     l = CaixeiroViajante.TWOOPT(s, matAdj)
-    print('Pós refinamento\n')
-    print(l)
-    
+    p = CaixeiroViajante.Avalia(l, matAdj)
+    print('Término de refinamento.\n' +
+          f'Melhor caminho encontrado: {l}\n'+
+          f'Novo custo: {p}\n')
+
 
 

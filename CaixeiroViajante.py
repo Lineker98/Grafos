@@ -26,7 +26,7 @@ def NearestNeighbor(listAdj):
     s.append(s[0])
     peso += listAdj[s[len(s)-1]][s[0]][1]#Recebe ultimo peso do vértice de chegada [origem][destino][peso]
     print('-' * 30)
-    print(f'Peso do ciclo de melhor caminho encontrado: {peso}')
+    print(f'Custo do ciclo de melhor caminho encontrado: {peso}')
     print('-' * 30) 
     print(f'Melhor ciclo Hamiltoniano encontrado: {s}')
     print('-' * 30)
