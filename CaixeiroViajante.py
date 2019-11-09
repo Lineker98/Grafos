@@ -42,12 +42,12 @@ def TWOOPT(s, listAdj):
         I1 = randint(1, len(s)-2)
         I2 = randint(1, len(s)-2)
         if I1 != I2:
-            a = copy.copy(s)
+            a = copy.deepcopy(s)
             b = a[I1]
             a[I1] = a[I2]
             a[I2] = b
             if Avalia(a, listAdj) < Avalia(s, listAdj):
-                s = copy.copy(a)            
+                s = copy.deepcopy(a)            
     return s
 
 
