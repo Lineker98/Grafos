@@ -6,7 +6,7 @@ import time
 def NearestNeighbor(listAdj):
     vaux = -1
     naovisitados = [x for x in range(len(listAdj))]#Lista com todos os vértices
-    visitado = [0 for x in range(len(listAdj))]#Lista de identificação paa vértice já visitado
+    visitado = [0 for x in range(len(listAdj))]#Lista de identificação para vértice já visitado
     u = 0
     s = []
     s.append(u)
