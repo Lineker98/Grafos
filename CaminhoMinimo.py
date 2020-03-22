@@ -1,4 +1,4 @@
-def min(distancia, q):
+def min(distancia, q):#Função para determinar vétice de menor distância em q
     menor = float('inf')
     vertice = -1
     for i in q:
