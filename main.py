@@ -32,9 +32,6 @@ for i in range(0, numArestas):
     matAdj[origem][destino] = peso
     arestas.append((origem, destino, peso))
 
-#print(listaAdj)
-#print(matAdj)
-#print(arestas)
 n = len(listaAdj)
 s = []
 l = []
