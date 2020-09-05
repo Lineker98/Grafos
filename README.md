@@ -2,4 +2,4 @@
 
 ![](./unnamed.jpg)
 
-Trabalhos realizados para a disciplina de Teoria dos Grafos
+Trabalho realizado para a disciplina de Teoria dos Grafos do curso de Engharia de Computação da UFOP
